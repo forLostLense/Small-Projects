@@ -27,7 +27,7 @@ var GreeterForm = React.createClass({
       this.refs.message.value = '';
       updates.message = message;
     }
-    this.props.onNewName(updates);
+    this.props.onNewData(updates);
 
 
   },
@@ -35,9 +35,15 @@ var GreeterForm = React.createClass({
     return (
       <div>
         <form onSubmit={this.onFormSubmit}>
-          <input type = "text" ref="name"/>
-          <input type = "text" ref="message"/>
-          <button> Submit </button>
+          <div>
+            <input type="text" placeholder="Enter your name" ref="name"/>
+          </div>
+          <div>
+            <textarea type="text" placeholder="Enter your message" ref="message"/>
+          </div>
+          <div>
+            <button> Submit </button>
+          </div>
         </form>
       </div>
     );
@@ -58,7 +64,7 @@ var Greeter = React.createClass({
       message: this.props.message
     }
   },
-  handleNewName: function (updates) {
+  handleNewData: function (updates) {
     this.setState(updates);
   },
   render: function() {
@@ -74,7 +80,7 @@ var Greeter = React.createClass({
       // Only one root html element to render
       <div>
         <GreeterMessage name={name} message={message}/>
-        <GreeterForm onNewName={this.handleNewName}/>
+        <GreeterForm onNewData={this.handleNewData}/>
       </div>
     );
   }
@@ -89,3 +95,8 @@ ReactDOM.render(
   <Greeter />,
   document.getElementById('app')
 );
+
+
+//Q & A
+// A presentational component: a component that uses props to display information
+// A container component: render its child components
